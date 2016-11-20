@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:elevation="5dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/preview_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/navigation_header_background" />
+
+            <RatingBar
+                android:id="@+id/ratingbar"
+                style="@android:style/Widget.Material.RatingBar.Small"
+                android:layout_width="195dp"
+                android:layout_height="match_parent"
+                android:numStars="5"
+                android:rating="1.0"
+                android:stepSize="1.0" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textview_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textview_price"
+                    android:layout_below="@+id/textview_price"
+                    android:text="@string/sample_address" />
+
+                <ImageView
+                    android:id="@+id/imageview_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_more_vert_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textview_price"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/sample_price" />
+
+                <TextView
+                    android:id="@+id/textView"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/imageview_more"
+                    android:layout_toStartOf="@+id/imageview_more"
+                    android:text="@string/recommended"
+                    android:textColor="@color/colorPrimary" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

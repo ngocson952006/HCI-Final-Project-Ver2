@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/cardview_action_add_favorite"
+        android:icon="@drawable/ic_thumb_up_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_add_favourite"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/cardview_action_view_detail"
+        android:icon="@drawable/ic_detail_black_24dp"
+        android:orderInCategory="101"
+        app:showAsAction="ifRoom"
+        android:title="@string/action_play_next" />
+
+</menu>
