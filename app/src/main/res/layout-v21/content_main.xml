@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="4dp"
-    android:paddingRight="4dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.tns.realestate.MainActivity"
@@ -27,11 +27,12 @@
 
         <TextView
             android:id="@+id/textview_current_location"
-            style="@android:style/TextAppearance.Material.Body1"
+            style="@android:style/TextAppearance.Material.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Hồ Chí Minh" />
+            android:text="Hồ Chí Minh"
+            android:textColor="@color/text_black_87" />
 
     </LinearLayout>
 

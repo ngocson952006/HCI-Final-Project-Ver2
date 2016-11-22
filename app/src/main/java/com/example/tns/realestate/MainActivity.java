@@ -43,7 +43,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName(); // tag
 
@@ -127,6 +128,7 @@ public class MainActivity extends AppCompatActivity
         this.recyclerView = (RecyclerView) this.findViewById(R.id.recycler_view);
         this.primaryApartmentAdapters = new PrimaryApartmentAdapter(this, this.sampleData.getSampleData());
         this.layoutManager = new LinearLayoutManager(this);
+        // divider for items of recycler view
         this.recyclerView.setLayoutManager(this.layoutManager);
         this.recyclerView.setAdapter(this.primaryApartmentAdapters);
 

@@ -12,7 +12,7 @@
     tools:context="com.example.tns.realestate.SearchByPriceActivity">
 
     <TextView
-        style="@android:style/TextAppearance.Holo.Widget.ActionBar.Title"
+        style="@android:style/TextAppearance.Material.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/search_by_price_header" />
@@ -62,5 +62,45 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_trending_up_black_24dp" />
+
+        <TextView
+            style="@android:style/TextAppearance.Material.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_trending_header" />
+
+        <TextView
+            style="@android:style/TextAppearance.Material.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
+            android:text="@string/search_trending_updated_time"
+            android:textColor="@color/text_black_87" />
+    </LinearLayout>
+
+    <TextView
+        style="@android:style/TextAppearance.Material.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/seach_trending_content" />
+
+    <lecho.lib.hellocharts.view.PieChartView
+        android:id="@+id/piechart_view_sample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

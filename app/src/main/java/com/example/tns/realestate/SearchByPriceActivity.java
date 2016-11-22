@@ -1,6 +1,7 @@
 package com.example.tns.realestate;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
@@ -8,6 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.PieChartData;
+import lecho.lib.hellocharts.model.SliceValue;
+import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.PieChartView;
 
 public class SearchByPriceActivity extends AppCompatActivity {
 
@@ -18,7 +27,42 @@ public class SearchByPriceActivity extends AppCompatActivity {
 
         // get Toolbars
         ActionBar actionBar = this.getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+
+        List<SliceValue> values = new ArrayList<>();
+
+        SliceValue sliceValue = new SliceValue();
+        sliceValue.setColor(ChartUtils.COLOR_RED);
+        sliceValue.setLabel("1 tỷ-1,5 tỷ");
+        sliceValue.setValue(0.6f);
+        SliceValue sliceValue1 = new SliceValue();
+        sliceValue1.setColor(ChartUtils.COLOR_GREEN);
+        sliceValue1.setLabel("800 triệu-1 tỷ");
+        sliceValue1.setValue(0.3f);
+        SliceValue sliceValue2 = new SliceValue();
+        sliceValue2.setColor(ChartUtils.COLOR_BLUE);
+        sliceValue2.setLabel("500-800 triệu");
+        sliceValue2.setValue(0.1f);
+
+
+        values.add(sliceValue);
+        values.add(sliceValue1);
+        values.add(sliceValue2);
+
+//        for (int i = 0; i < numValues; ++i) {
+//            values.add(new SliceValue((float) Math.random() * 30 + 15, ChartUtils.pickColor()));
+//        }
+
+        // Prepare sample data for Piechart
+        PieChartData pieChartData = new PieChartData(values);
+        pieChartData.setHasLabels(true);
+     //   pieChartData.setValueLabelBackgroundColor(R.color.colorAccent);
+
+        final PieChartView pieChartView = (PieChartView) this.findViewById(R.id.piechart_view_sample);
+        pieChartView.setChartRotationEnabled(true);
+        pieChartView.setPieChartData(pieChartData);
+
 
     }
 
@@ -46,4 +90,5 @@ public class SearchByPriceActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -37,5 +37,7 @@ dependencies {
     compile 'com.google.android.gms:play-services:9.8.0'
     // transient floating action button
     compile 'com.gordonwong:material-sheet-fab:1.2.1'
+    // chart android with HelloCharts
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     testCompile 'junit:junit:4.12'
 }

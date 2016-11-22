@@ -112,4 +112,7 @@
     <string name="search_by_current_location">Địa điểm xung quanh</string>
     <string name="search_by_price_header">Khoảng giá trị bạn cần tìm ?</string>
     <string name="action_share">Chia sẽ</string>
+    <string name="search_trending_header">Xu hướng tìm kiếm</string>
+    <string name="search_trending_updated_time">(Cập nhật ngày 25/8/2016)</string>
+    <string name="seach_trending_content">Xu hướng tìm kiếm không gian sống yên tĩnh, môi trường sống trong lành, thư thái cùng với thiết kế căn hộ có diện tích sử dụng rộng rãi đang là sự lựa chọn hàng đầu cho những cặp vợ chồng trẻ thành đạt. Xu hướng tìm kiếm giá từ 1,000,000,000 đền 1,500,000 đang được nhiều người dùng tìm kiếm.</string>
 </resources>
