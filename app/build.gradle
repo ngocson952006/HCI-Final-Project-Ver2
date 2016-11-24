@@ -24,20 +24,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:design:24.2.1'
     // RecyclerView
-    compile 'com.android.support:recyclerview-v7:24.2.+'
 
     // CardView
-    compile 'com.android.support:cardview-v7:24.2.+'
+    // transient floating action button
+    // chart android with HelloCharts
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
-    compile 'com.google.android.gms:play-services:9.8.0'
-    // transient floating action button
+    compile 'com.google.android.gms:play-services:10.0.0'
     compile 'com.gordonwong:material-sheet-fab:1.2.1'
-    // chart android with HelloCharts
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     testCompile 'junit:junit:4.12'
 }

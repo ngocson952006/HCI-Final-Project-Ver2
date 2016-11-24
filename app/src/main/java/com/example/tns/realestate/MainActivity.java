@@ -344,6 +344,18 @@ public class MainActivity extends AppCompatActivity
             } else {
                 this.startActivity(detailIntent);
             }
+        } else if (viewId == R.id.textview_fab_menu_search_by_current_location) {
+            // navigate to maps activity
+            Intent googleMapsIntent = new Intent(this, MapsActivity.class);
+            // hide the fab sheet.
+            this.materialSheetFab.hideSheet();
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                Bundle transientBundle = ActivityOptions.makeCustomAnimation(this, android.R.anim.slide_in_left,
+                        android.R.anim.slide_out_right).toBundle();
+                this.startActivity(googleMapsIntent, transientBundle);
+            } else {
+                this.startActivity(googleMapsIntent);
+            }
         }
     }
 }

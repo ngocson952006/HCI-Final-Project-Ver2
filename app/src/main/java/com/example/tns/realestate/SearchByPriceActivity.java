@@ -1,13 +1,11 @@
 package com.example.tns.realestate;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -57,7 +55,7 @@ public class SearchByPriceActivity extends AppCompatActivity {
         // Prepare sample data for Piechart
         PieChartData pieChartData = new PieChartData(values);
         pieChartData.setHasLabels(true);
-     //   pieChartData.setValueLabelBackgroundColor(R.color.colorAccent);
+        //   pieChartData.setValueLabelBackgroundColor(R.color.colorAccent);
 
         final PieChartView pieChartView = (PieChartView) this.findViewById(R.id.piechart_view_sample);
         pieChartView.setChartRotationEnabled(true);
