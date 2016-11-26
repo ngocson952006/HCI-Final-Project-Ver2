@@ -7,6 +7,8 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +62,9 @@ public class SearchByPriceActivity extends AppCompatActivity {
         final PieChartView pieChartView = (PieChartView) this.findViewById(R.id.piechart_view_sample);
         pieChartView.setChartRotationEnabled(true);
         pieChartView.setPieChartData(pieChartData);
-
+        // animation for PieChartView
+        Animation swingUpLeftAnimation = AnimationUtils.loadAnimation(this, R.anim.swing_up_left);
+        pieChartView.startAnimation(swingUpLeftAnimation);
 
     }
 
@@ -83,6 +87,7 @@ public class SearchByPriceActivity extends AppCompatActivity {
                     // This activity is part of this app's task, so simply
                     // navigate up to the logical parent activity.
                     NavUtils.navigateUpTo(this, upIntent);
+                    this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 }
                 return true;
         }

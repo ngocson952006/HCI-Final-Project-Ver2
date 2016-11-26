@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -93,7 +94,8 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
         textViewArea.setText("Diện tích : " + String.valueOf(detail.getArea()) + "m2");
         final TextView textViewDescription = (TextView) this.findViewById(R.id.textview_detail_description);
         textViewDescription.setText(String.valueOf(detail.getDescription()));
-
+        final AppCompatRatingBar appCompatRatingBar = (AppCompatRatingBar) this.findViewById(R.id.detail_ratingbar);
+        appCompatRatingBar.setRating(detail.getRating());
 
     }
 
@@ -110,5 +112,12 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
                 this.startActivity(googleMapsIntent);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // animation when navigating back to main activity
+        this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 }

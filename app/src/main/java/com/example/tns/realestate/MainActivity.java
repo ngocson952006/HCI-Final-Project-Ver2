@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity
     // shared preference keys
     private static final String USER_LAST_KNOWN_LOCATION_SHARED_PREFERENCE_KEY = "user_last_known_location_shared_preference_key";
     private static final String USER_LAST_KNOWN_LOCATION_ADDRESS_SHARED_PREFERENCE_KEY = "user_last_known_location_address_shared_preference_key";
-
+    // public shared intent keys
+    public static final String USER_CURRENT_LOCATION = "user_current_location";
+    ;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter primaryApartmentAdapters;
@@ -131,6 +133,7 @@ public class MainActivity extends AppCompatActivity
         // divider for items of recycler view
         this.recyclerView.setLayoutManager(this.layoutManager);
         this.recyclerView.setAdapter(this.primaryApartmentAdapters);
+        this.recyclerView.setHasFixedSize(true);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -333,29 +336,42 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {
         int viewId = v.getId();
         if (viewId == R.id.textview_fab_menu_search_by_price) {
-            Intent detailIntent = new Intent(this, SearchByPriceActivity.class);
+            Intent searchByPricelIntent = new Intent(this, SearchByPriceActivity.class);
 
             // hide the fab sheet.
             this.materialSheetFab.hideSheet();
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                Bundle transientBundle = ActivityOptions.makeCustomAnimation(this, android.R.anim.slide_in_left,
-                        android.R.anim.slide_out_right).toBundle();
-                this.startActivity(detailIntent, transientBundle);
-            } else {
-                this.startActivity(detailIntent);
-            }
+            this.startIntentSlideInLeft(searchByPricelIntent);
         } else if (viewId == R.id.textview_fab_menu_search_by_current_location) {
             // navigate to maps activity
             Intent googleMapsIntent = new Intent(this, MapsActivity.class);
+            // put user current location into intent
+            googleMapsIntent.putExtra(USER_CURRENT_LOCATION, this.lastKnownLocation);
             // hide the fab sheet.
             this.materialSheetFab.hideSheet();
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                Bundle transientBundle = ActivityOptions.makeCustomAnimation(this, android.R.anim.slide_in_left,
-                        android.R.anim.slide_out_right).toBundle();
-                this.startActivity(googleMapsIntent, transientBundle);
-            } else {
-                this.startActivity(googleMapsIntent);
-            }
+            this.startIntentSlideInLeft(googleMapsIntent);
+        } else if (viewId == R.id.textview_fab_menu_search_by_city) {
+            Intent searchByCityIntent = new Intent(this, SearchByCityActivity.class);
+
+            // hide the fab sheet.
+            this.materialSheetFab.hideSheet();
+            this.startIntentSlideInLeft(searchByCityIntent);
         }
     }
+
+
+    /**
+     * Start an intent with slide in left transient
+     *
+     * @param destinationIntent : the intent that will be navigated
+     */
+    private void startIntentSlideInLeft(Intent destinationIntent) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            Bundle transientBundle = ActivityOptions.makeCustomAnimation(this, android.R.anim.slide_in_left,
+                    android.R.anim.slide_out_right).toBundle();
+            this.startActivity(destinationIntent, transientBundle);
+        } else {
+            this.startActivity(destinationIntent);
+        }
+    }
+
 }

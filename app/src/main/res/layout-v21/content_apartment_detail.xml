@@ -19,6 +19,15 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
+        <android.support.v7.widget.AppCompatRatingBar
+            android:id="@+id/detail_ratingbar"
+            style="@android:style/Widget.Material.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="1.0"
+            android:stepSize="1.0" />
+
         <TextView
             android:id="@+id/textview_detail_price"
             style="@android:style/TextAppearance.Material.Headline"
@@ -91,17 +100,19 @@
             android:text="@string/see_on_map" />
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/textview_description_header"
+            style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/decription_header" />
 
         <TextView
             android:id="@+id/textview_detail_description"
-            style="@style/TextAppearance.AppCompat.Small"
+            style="@android:style/TextAppearance.Material.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sample_description" />
+            android:text="@string/sample_description"
+            android:textAlignment="inherit" />
 
         <View
             android:layout_width="match_parent"
@@ -111,7 +122,49 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/textview_agent_contact_header"
+            style="@android:style/TextAppearance.Material.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agent_header" />
+
+        <TextView
+            android:id="@+id/textview_agent_name"
+            style="@android:style/TextAppearance.Material.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/metro_tower"
+            android:textColor="@color/text_black_87" />
+
+        <TextView
+            android:id="@+id/textview_agent_address"
+            style="@android:style/TextAppearance.Material.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/metro_tower_address" />
+
+        <TextView
+            android:id="@+id/textview_agent_phone"
+            style="@android:style/TextAppearance.Material.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/metro_tower_phone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register_header" />
