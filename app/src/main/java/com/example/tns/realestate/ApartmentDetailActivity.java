@@ -97,6 +97,14 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
         final AppCompatRatingBar appCompatRatingBar = (AppCompatRatingBar) this.findViewById(R.id.detail_ratingbar);
         appCompatRatingBar.setRating(detail.getRating());
 
+        // about agent information
+        final TextView textViewAgentName = (TextView) this.findViewById(R.id.textview_agent_name);
+        textViewAgentName.setText(detail.getProvider().getName());
+        final TextView textViewAgentAddress = (TextView) this.findViewById(R.id.textview_agent_address);
+        textViewAgentAddress.setText("Địa chỉ: " + detail.getProvider().getAddress());
+        final TextView textViewAgentPhone = (TextView) this.findViewById(R.id.textview_agent_phone);
+        textViewAgentPhone.setText("Liên hệ: " + detail.getProvider().getContact());
+
     }
 
     @Override

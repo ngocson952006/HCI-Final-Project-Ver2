@@ -20,8 +20,9 @@ public class ApartmentDetail implements Parcelable {
     private int numberOfBedRooms;
     private int numberOfBathRooms;
     private float area;
+    private Provider provider;
 
-    public ApartmentDetail(int[] bitmaps, String price, String address, String description, Location location, float rating, int[] parameters) {
+    public ApartmentDetail(int[] bitmaps, String price, String address, String description, Location location, float rating, int[] parameters, Provider provider) {
         this.bitmapsResource = bitmaps;
         this.price = price;
         this.address = address;
@@ -31,6 +32,7 @@ public class ApartmentDetail implements Parcelable {
         this.area = (float) parameters[0];
         this.numberOfBedRooms = parameters[1];
         this.numberOfBathRooms = parameters[2];
+        this.provider = provider;
     }
 
     protected ApartmentDetail(Parcel in) {
@@ -43,6 +45,7 @@ public class ApartmentDetail implements Parcelable {
         numberOfBedRooms = in.readInt();
         numberOfBathRooms = in.readInt();
         area = in.readFloat();
+        provider = in.readParcelable(Provider.class.getClassLoader());
     }
 
     @Override
@@ -56,6 +59,7 @@ public class ApartmentDetail implements Parcelable {
         dest.writeInt(numberOfBedRooms);
         dest.writeInt(numberOfBathRooms);
         dest.writeFloat(area);
+        dest.writeParcelable(provider, flags);
     }
 
     @Override
@@ -145,5 +149,13 @@ public class ApartmentDetail implements Parcelable {
 
     public void setArea(float area) {
         this.area = area;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 }

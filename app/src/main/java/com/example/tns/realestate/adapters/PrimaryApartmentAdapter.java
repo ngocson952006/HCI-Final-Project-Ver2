@@ -56,6 +56,7 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
         if (detail != null) {
             holder.textViewPrice.setText(detail.getPrice());
             holder.textViewAddress.setText(detail.getAddress());
+            holder.textviewAgentName.setText(detail.getProvider().getName());
             // we should get view in View.post method. Why ?
             // When the onCreate() method is called, the content view is set
             // inflating the layout XML with a LayoutInflater. The process of inflation involves creating the views but not setting their sizes
@@ -134,6 +135,7 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
         // each data item is just a string in this case
         TextView textViewPrice;
         TextView textViewAddress;
+        TextView textviewAgentName;
         RatingBar ratingBar;
 
         public ViewHolder(View view) {
@@ -142,6 +144,7 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
             this.textViewAddress = (TextView) view.findViewById(R.id.textview_address);
             this.imagePreview = (ImageView) view.findViewById(R.id.preview_image);
             this.imageViewMore = (ImageView) view.findViewById(R.id.imageview_more);
+            this.textviewAgentName = (TextView) view.findViewById(R.id.textview_cardview_agent_name);
             this.ratingBar = (RatingBar) view.findViewById(R.id.ratingbar);
         }
     }

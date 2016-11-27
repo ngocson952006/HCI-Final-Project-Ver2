@@ -37,10 +37,14 @@ public class SampleData {
         int[] type1s = new int[]{R.drawable.type1_1, R.drawable.type1_2, R.drawable.type1_3};
         int[] type2s = new int[]{R.drawable.type2_1, R.drawable.type2_2, R.drawable.type2_3};
         int[] type3s = new int[]{R.drawable.type3_1, R.drawable.type3_2, R.drawable.type3_3};
-        this.sampleData.add(new ApartmentDetail(premiumTypes, "$1,500,000,0000 VNĐ", "Bến nghế - Quận 1 - Hồ Chí Minh", this.context.getString(R.string.sample_description), null, 1.5f, new int[]{60, 2, 3}));
-        this.sampleData.add(new ApartmentDetail(type1s, "$1,100,000,0000 VNĐ", "Quận Tân Bình - Hồ Chí Minh", this.context.getString(R.string.sample_description), null, 0.8f, new int[]{60, 2, 3}));
-        this.sampleData.add(new ApartmentDetail(type2s, "$1,000,000,0000 VNĐ", "Linh Trung - Thủ Đức - Hồ Chí Minh", this.context.getString(R.string.sample_description), null, 1.0f, new int[]{60, 2, 3}));
-        this.sampleData.add(new ApartmentDetail(type3s, "$900,000,0000 VNĐ", "Thủ dầu một - Bình Dương", this.context.getString(R.string.sample_description), null, 1.4f, new int[]{45, 2, 3}));
+        this.sampleData.add(new ApartmentDetail(premiumTypes, "$1,500,000,0000 VNĐ", "Bến nghế - Quận 1 - Hồ Chí Minh", this.context.getString(R.string.sample_description)
+                , null, 1.5f, new int[]{60, 2, 3}, new Provider("Flemington Tower", "Đường Trần Đại Nghĩa, P Tân Tạo A, Q Bình Tân, TPHCM ", "(08) 3962 1599")));
+        this.sampleData.add(new ApartmentDetail(type1s, "$1,100,000,0000 VNĐ", "Quận Tân Bình - Hồ Chí Minh", this.context.getString(R.string.sample_description), null, 0.8f, new int[]{60, 2, 3},
+                new Provider("Saigon South Residences", "Nguyễn Hữu Thọ, Xã Phước Kiển, Nhà Bè, Hồ Chí Minh", "(08) 3962 1599")));
+        this.sampleData.add(new ApartmentDetail(type2s, "$1,000,000,0000 VNĐ", "Linh Trung - Thủ Đức - Hồ Chí Minh", this.context.getString(R.string.sample_description), null, 1.0f, new int[]{60, 2, 3},
+                new Provider("Flemington Tower", "Nguyễn Hữu Thọ, Xã Phước Kiển, Nhà Bè, Hồ Chí Minh", "0902587529")));
+        this.sampleData.add(new ApartmentDetail(type3s, "$900,000,0000 VNĐ", "Thủ dầu một - Bình Dương", this.context.getString(R.string.sample_description), null, 1.4f, new int[]{45, 2, 3},
+                new Provider("Flemington Tower", "Đường Trần Đại Nghĩa, P Tân Tạo A, Q Bình Tân, TPHCM ", "(08) 3962 1599")));
     }
 
     public List<ApartmentDetail> getSampleData() {

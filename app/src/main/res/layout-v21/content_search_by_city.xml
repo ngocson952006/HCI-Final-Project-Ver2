@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -21,8 +21,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:contentDescription="@string/city_icon"
                 android:src="@drawable/ic_location_city_primary_color_24dp" />
 
@@ -40,6 +40,13 @@
             android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_search_by_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:focusableInTouchMode="true"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

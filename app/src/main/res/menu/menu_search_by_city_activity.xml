@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_on_top"
+        android:icon="@drawable/ic_arrow_upward_black_24dp"
+        android:title="@string/back_to_top"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_reload"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:title="@string/reload"
+        app:showAsAction="ifRoom" />
+</menu>

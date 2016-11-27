@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp"
+    app:cardCornerRadius="2dp"
     app:cardElevation="5dp">
 
     <LinearLayout
@@ -41,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/textview_price"
                 android:layout_below="@+id/textview_price"
-                android:text="@string/sample_address" />
+                android:text="@string/sample_address"
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/imageview_more"
@@ -60,18 +62,19 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
                 android:text="@string/sample_price"
-                android:textColor="@color/text_black_87" />
+                android:textColor="@color/text_black_87"
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textview_cardview_agent_name"
                 style="@android:style/TextAppearance.Material.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="21dp"
+                android:layout_marginEnd="16dp"
                 android:layout_toStartOf="@+id/imageview_more"
-                android:gravity="center"
                 android:text="@string/recommended"
+                android:textAlignment="textStart"
                 android:textColor="@color/colorPrimary" />
 
 

@@ -124,4 +124,6 @@
     <string name="metro_tower_phone">Liên hệ : 098 925 36 33</string>
     <string name="title_activity_search_by_city">SearchByCityActivity</string>
     <string name="city_icon">Thành phố</string>
+    <string name="back_to_top">Đầu trang</string>
+    <string name="reload">Tải lại</string>
 </resources>
