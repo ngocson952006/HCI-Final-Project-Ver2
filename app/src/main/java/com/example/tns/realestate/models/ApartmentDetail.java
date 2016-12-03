@@ -1,6 +1,5 @@
 package com.example.tns.realestate.models;
 
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -19,10 +18,16 @@ public class ApartmentDetail implements Parcelable {
     private float rating;
     private int numberOfBedRooms;
     private int numberOfBathRooms;
+    private int floor;
     private float area;
     private Provider provider;
+    // additional information
+    private String neighbourhoodInformation;
+    private String nearBySchoolInformation;
 
-    public ApartmentDetail(int[] bitmaps, String price, String address, String description, Location location, float rating, int[] parameters, Provider provider) {
+
+    public ApartmentDetail(int[] bitmaps, String price, String address, String description, Location location,
+                           float rating, int[] parameters, Provider provider, int floor, String neighbourhoodInformation, String nearBySchoolInformation) {
         this.bitmapsResource = bitmaps;
         this.price = price;
         this.address = address;
@@ -33,7 +38,11 @@ public class ApartmentDetail implements Parcelable {
         this.numberOfBedRooms = parameters[1];
         this.numberOfBathRooms = parameters[2];
         this.provider = provider;
+        this.floor = floor;
+        this.neighbourhoodInformation = neighbourhoodInformation;
+        this.nearBySchoolInformation = nearBySchoolInformation;
     }
+
 
     protected ApartmentDetail(Parcel in) {
         bitmapsResource = in.createIntArray();
@@ -44,27 +53,11 @@ public class ApartmentDetail implements Parcelable {
         rating = in.readFloat();
         numberOfBedRooms = in.readInt();
         numberOfBathRooms = in.readInt();
+        floor = in.readInt();
         area = in.readFloat();
         provider = in.readParcelable(Provider.class.getClassLoader());
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeIntArray(bitmapsResource);
-        dest.writeString(price);
-        dest.writeString(address);
-        dest.writeString(description);
-        dest.writeParcelable(location, flags);
-        dest.writeFloat(rating);
-        dest.writeInt(numberOfBedRooms);
-        dest.writeInt(numberOfBathRooms);
-        dest.writeFloat(area);
-        dest.writeParcelable(provider, flags);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        neighbourhoodInformation = in.readString();
+        nearBySchoolInformation = in.readString();
     }
 
     public static final Creator<ApartmentDetail> CREATOR = new Creator<ApartmentDetail>() {
@@ -78,6 +71,20 @@ public class ApartmentDetail implements Parcelable {
             return new ApartmentDetail[size];
         }
     };
+
+    /**
+     * Generate {@link String} array contains all short detail of an apartment
+     *
+     * @return : {@link String[]} with 4 primary information : floor, square, number of bedrooms, number bathrooms
+     */
+    public String[] generatePreviewInformation() {
+        return new String[]{
+                "Tầng : " + this.floor,
+                "Diện tích : " + this.area + "m2",
+                "Phòng ngủ : " + this.numberOfBedRooms,
+                "Phòng tắm : " + this.numberOfBathRooms
+        };
+    }
 
     public int[] getBitmapsResource() {
         return bitmapsResource;
@@ -157,5 +164,52 @@ public class ApartmentDetail implements Parcelable {
 
     public void setProvider(Provider provider) {
         this.provider = provider;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public String getNeighbourhoodInformation() {
+        return neighbourhoodInformation;
+    }
+
+    public void setNeighbourhoodInformation(String neighbourhoodInformation) {
+        this.neighbourhoodInformation = neighbourhoodInformation;
+    }
+
+    public String getNearBySchoolInformation() {
+        return nearBySchoolInformation;
+    }
+
+    public void setNearBySchoolInformation(String nearBySchoolInformation) {
+        this.nearBySchoolInformation = nearBySchoolInformation;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeIntArray(bitmapsResource);
+        dest.writeString(price);
+        dest.writeString(address);
+        dest.writeString(description);
+        dest.writeParcelable(location, flags);
+        dest.writeFloat(rating);
+        dest.writeInt(numberOfBedRooms);
+        dest.writeInt(numberOfBathRooms);
+        dest.writeInt(floor);
+        dest.writeFloat(area);
+        dest.writeParcelable(provider, flags);
+        dest.writeString(neighbourhoodInformation);
+        dest.writeString(nearBySchoolInformation);
     }
 }

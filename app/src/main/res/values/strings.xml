@@ -103,9 +103,10 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="see_on_map">Xem trên Google Maps</string>
     <string name="decription_header">Mô tả</string>
-    <string name="sample_description">Theo mặt bằng căn hộ tầng điển hình của chủ đầu tư cung cấp, căn hộ số 4 có kết cấu giống hệt như căn hộ số 2 cùng tòa nhà T2 khu N01 chung cư Ngoại Giao Đoàn. Tuy nhiên, căn số 4 chưng cư Ngoại Giao Đoàn N01 sẽ có được hướng ban công phía Đông vô cùng đẹp hướng ra mặt đường, và nhìn xa hơn sẽ có thể thấy được khu Hồ Tây.
-        Diện tích của sảnh ban công này là 6m2 sẽ giúp cả căn hộ đón ánh nắng mặt trời tự nhiên tốt nhất.  Ánh sáng từ phía Đông vào ban ngày sẽ rất nhẹ nhàng và không gây khó chịu hay làm nóng căn hộ.
-    Tại phòng ngủ lớn số 1 của căn hộ sẽ có thêm một ban công hướng nam của tòa nhà với diện tích 3m2 giúp cho phòng ngủ cũng luôn thông thoáng. Với những gia chủ thích sự yên tĩnh thì căn hộ số 4 còn được yêu thích vì cách xa khu sảnh chờ thang máy của cả tầng, tạo nên sự kín đáo cho gia đình.</string>
+    <string name="sample_description">Theo mặt bằng căn hộ tầng điển hình của chủ đầu tư cung cấp, căn hộ số 4 có kết cấu giống hệt như căn hộ số 2 cùng tòa nhà T2 khu N01 chung cư Ngoại Giao Đoàn.
+        Tuy nhiên, căn số 4 chưng cư Ngoại Giao Đoàn N01 sẽ có được hướng ban công phía Đông vô cùng đẹp hướng ra mặt đường, và nhìn xa hơn sẽ có thể thấy được khu Hồ Tây.
+        Diện tích của sảnh ban công này là 6m2 sẽ giúp cả căn hộ đón ánh nắng mặt trời tự nhiên tốt nhất.
+        Với những gia chủ thích sự yên tĩnh thì căn hộ số 4 còn được yêu thích vì cách xa khu sảnh chờ thang máy của cả tầng, tạo nên sự kín đáo cho gia đình.</string>
     <string name="register_header">Đăng ký</string>
     <string name="search_by_price">Tìm kiếm theo giá</string>
     <string name="search_by_city">Tìm kiếm theo thành phố</string>
@@ -126,4 +127,10 @@
     <string name="city_icon">Thành phố</string>
     <string name="back_to_top">Đầu trang</string>
     <string name="reload">Tải lại</string>
+    <string name="sample_preview_information">Diện tích 100m2</string>
+    <string name="sample_neighbourhood_information">Phía dưới căn hộ có khu mua sắm và siêu thị CircleK mở 24/24. Phía dưới tầng hầm có dịch vụ giữ xe an toàn.</string>
+    <string name="sample_nearby_school">Một số trường học gần căn hộ. Cụ thể : Trường ĐH Công nghiệp TP.HCM, Trường ĐH Công nghệ Sài Gòn,Trường ĐH Giao thông Vận tải - cơ sở 2</string>
+    <string name="_neighbourhood_information_header">Thông tin liên quan</string>
+    <string name="nearby_school_information_header">Trường học lân cận</string>
+    <string name="added_into_favorite_list">Đã thêm vào danh sách yêu thích</string>
 </resources>

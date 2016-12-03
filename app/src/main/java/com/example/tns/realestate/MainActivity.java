@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -41,8 +42,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = MainActivity.class.getSimpleName(); // tag
 
@@ -53,8 +54,6 @@ public class MainActivity extends AppCompatActivity
     private static final String USER_LAST_KNOWN_LOCATION_ADDRESS_SHARED_PREFERENCE_KEY = "user_last_known_location_address_shared_preference_key";
     // public shared intent keys
     public static final String USER_CURRENT_LOCATION = "user_current_location";
-    ;
-
     private RecyclerView recyclerView;
     private RecyclerView.Adapter primaryApartmentAdapters;
     private RecyclerView.LayoutManager layoutManager;
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity
     private Location lastKnownLocation;
     private GoogleApiClient googleApiClient;
     private MaterialSheetFab materialSheetFab;
+    //   private Handler locationHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,12 +137,12 @@ public class MainActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // Here, thisActivity is the current activity
             if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION)
+                    Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED) {
 
                 // Should we show an explanation?
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                        Manifest.permission.ACCESS_FINE_LOCATION)) {
 
                     // Show an explanation to the user *asynchronously* -- don't block
                     // this thread waiting for the user's response! After the user
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
 
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
-                            },
+                                    Manifest.permission.ACCESS_FINE_LOCATION},
                             LOCATION_PERMISSION_REQUEST_CODE);
 
                     // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
@@ -162,9 +162,9 @@ public class MainActivity extends AppCompatActivity
                     // result of the request.
                 }
             }
-            this.initializeGoogleApiClient();
         }
-
+        this.initializeGoogleApiClient();
+        // hanlder to hanlde location
     }
 
     @Override
@@ -231,8 +231,7 @@ public class MainActivity extends AppCompatActivity
     protected void onStart() {
         this.googleApiClient.connect();
         super.onStart();
-
-
+        // instance a LocationHelper
     }
 
 
@@ -246,9 +245,9 @@ public class MainActivity extends AppCompatActivity
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
-                    //  this.initializeGoogleApiClient();
+                    this.initializeGoogleApiClient();
                     // connect
-                    // this.googleApiClient.connect();
+                    this.googleApiClient.connect();
 
                 } else {
 
@@ -279,7 +278,9 @@ public class MainActivity extends AppCompatActivity
     public void onConnected(@Nullable Bundle bundle) {
         Log.d(TAG, "onConnected");
         // Get user's last known location
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        Log.d(TAG, "Visualizing location");
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -287,31 +288,41 @@ public class MainActivity extends AppCompatActivity
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            Log.d(TAG, "Visualizing location");
-            this.lastKnownLocation = LocationServices.FusedLocationApi.getLastLocation(this.googleApiClient);
-            // make sure location we've found is valid
-            if (this.lastKnownLocation != null) {
-
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                try {
-                    List<Address> addresses = geocoder.getFromLocation(this.lastKnownLocation.getLatitude(),
-                            this.lastKnownLocation.getLongitude(),
-                            1 // 1 : we just a single address
-                    );
-                    // display on View
-                    Address currentAddress = addresses.get(0);
-                    final TextView textViewCurrentAddress = (TextView) this.findViewById(R.id.textview_current_location);
-                    // visualize the address locality
-                    textViewCurrentAddress.setText(currentAddress.getLocality() + " - " + currentAddress.getAddressLine(0) + " - " + currentAddress.getCountryName());
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e(TAG, e.getMessage());
-                }
-            }
+            return;
         }
+        this.lastKnownLocation = LocationServices.FusedLocationApi.getLastLocation(this.googleApiClient);
+        // make sure location we've found is valid
+        if (this.lastKnownLocation != null) {
+            // start new async task to update text view
+            new AsyncTask<Void, Void, Address>() {
+                @Override
+                protected Address doInBackground(Void... params) {
+                    Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(lastKnownLocation.getLatitude(),
+                                lastKnownLocation.getLongitude(),
+                                1 // 1 : we just a single address
+                        );
+                        // display on View
+                        return addresses.get(0);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Log.e(TAG, e.getMessage());
+                        return null;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Address address) {
+                    final TextView textViewCurrentAddress = (TextView) findViewById(R.id.textview_current_location);
+                    // visualize the address locality
+                    textViewCurrentAddress.setText(address.getLocality() + " - " + address.getAddressLine(0) + " - " + address.getCountryName());
+
+                }
+            }.execute();
 
 
+        }
     }
 
     @Override
@@ -326,7 +337,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onStop() {
-        this.googleApiClient.disconnect();
+        //this.googleApiClient.disconnect();
         super.onStop();
     }
 

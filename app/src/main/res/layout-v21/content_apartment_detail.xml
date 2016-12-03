@@ -40,7 +40,8 @@
             style="@android:style/TextAppearance.Material.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sample_address" />
+            android:text="@string/sample_address"
+            android:textColor="@color/text_black_87" />
 
         <LinearLayout
             android:id="@+id/linear_layout_detail_params"
@@ -50,11 +51,21 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textview_detail_floor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="Lầu : 3"
+                android:textColor="@color/text_black_87" />
+
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
+                android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_bedroom" />
 
@@ -64,13 +75,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:text="2" />
+                android:text="2"
+                android:textColor="@color/text_black_87" />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
+                android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
                 android:src="@drawable/bathroom" />
 
@@ -80,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:text="2" />
+                android:text="2"
+                android:textColor="@color/text_black_87" />
 
             <TextView
                 android:id="@+id/textview_detail_area"
@@ -88,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:text="Diện tích : 50m2" />
+                android:text="Diện tích : 50m2"
+                android:textColor="@color/text_black_87" />
 
         </LinearLayout>
 
@@ -155,6 +170,56 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:text="@string/metro_tower_phone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray" />
+        <!-- Begin neighbourhood information -->
+        <TextView
+            android:id="@+id/textview_neighbourhood_information_header"
+            style="@android:style/TextAppearance.Material.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_neighbourhood_information_header" />
+
+        <TextView
+            android:id="@+id/textview_neighbourhood_information"
+            style="@android:style/TextAppearance.Material.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/metro_tower_phone" />
+
+        <!-- End neighbourhood information-->
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray" />
+        <!-- Begin nearby school information -->
+        <TextView
+            android:id="@+id/textview_nearby_school_information_header"
+            style="@android:style/TextAppearance.Material.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nearby_school_information_header" />
+
+        <TextView
+            android:id="@+id/textview_nearby_school_information"
+            style="@android:style/TextAppearance.Material.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/metro_tower_phone" />
+        <!-- End nearby school information -->
 
         <View
             android:layout_width="match_parent"

@@ -5,9 +5,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -24,8 +30,10 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apartment_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_apartment_detail);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = this.getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = this.getIntent();
         ApartmentDetail detail = intent.getParcelableExtra("detail_apartment");
@@ -80,7 +88,11 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
         // doing nothing
     }
 
-
+    /**
+     * Bind view components and set data
+     *
+     * @param detail : Detail of an apartment to be shown
+     */
     private void prepareViewTextData(ApartmentDetail detail) {
         final TextView textViewPrice = (TextView) this.findViewById(R.id.textview_detail_price);
         textViewPrice.setText(detail.getPrice());
@@ -96,6 +108,8 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
         textViewDescription.setText(String.valueOf(detail.getDescription()));
         final AppCompatRatingBar appCompatRatingBar = (AppCompatRatingBar) this.findViewById(R.id.detail_ratingbar);
         appCompatRatingBar.setRating(detail.getRating());
+        final TextView textViewFloor = (TextView) this.findViewById(R.id.textview_detail_floor);
+        textViewFloor.setText("Lầu : " + detail.getFloor());
 
         // about agent information
         final TextView textViewAgentName = (TextView) this.findViewById(R.id.textview_agent_name);
@@ -104,6 +118,12 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
         textViewAgentAddress.setText("Địa chỉ: " + detail.getProvider().getAddress());
         final TextView textViewAgentPhone = (TextView) this.findViewById(R.id.textview_agent_phone);
         textViewAgentPhone.setText("Liên hệ: " + detail.getProvider().getContact());
+
+        // additional information
+        final TextView textViewNeighbourhoodInformation = (TextView) this.findViewById(R.id.textview_neighbourhood_information);
+        textViewNeighbourhoodInformation.setText(detail.getNeighbourhoodInformation());
+        final TextView textViewNearbySchoolInformation = (TextView) this.findViewById(R.id.textview_nearby_school_information);
+        textViewNearbySchoolInformation.setText(detail.getNearBySchoolInformation());
 
     }
 
@@ -127,5 +147,37 @@ public class ApartmentDetailActivity extends AppCompatActivity implements BaseSl
         super.onBackPressed();
         // animation when navigating back to main activity
         this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = this.getMenuInflater();
+        menuInflater.inflate(R.menu.menu_apartment_detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+                    // This activity is NOT part of this app's task, so create a new task
+                    // when navigating up, with a synthesized back stack.
+                    TaskStackBuilder.create(this)
+                            // Add all of this activity's parents to the back stack
+                            .addNextIntentWithParentStack(upIntent)
+                            // Navigate up to the closest parent
+                            .startActivities();
+                } else {
+                    // This activity is part of this app's task, so simply
+                    // navigate up to the logical parent activity.
+                    NavUtils.navigateUpTo(this, upIntent);
+                    this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

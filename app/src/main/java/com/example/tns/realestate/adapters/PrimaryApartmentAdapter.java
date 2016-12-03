@@ -4,16 +4,20 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tns.realestate.ApartmentDetailActivity;
 import com.example.tns.realestate.R;
@@ -21,6 +25,9 @@ import com.example.tns.realestate.models.ApartmentDetail;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by TNS on 11/19/2016.
@@ -90,7 +97,8 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
                     detailIntent.putExtra("detail_apartment", detail);
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                        Bundle transientBundle = ActivityOptions.makeCustomAnimation(context, android.R.anim.slide_in_left, android.R.anim.slide_out_right).toBundle();
+                        Bundle transientBundle = ActivityOptions.makeCustomAnimation(context, android.R.anim.slide_in_left,
+                                android.R.anim.slide_out_right).toBundle();
                         context.startActivity(detailIntent, transientBundle);
                     } else {
                         context.startActivity(detailIntent);
@@ -99,6 +107,27 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
                 }
             });
 
+            // Timer to change text view's text
+            // sample values
+            final String[] previewInformationStrings = detail.generatePreviewInformation(); // get preview information
+            final AtomicInteger atomicInteger = new AtomicInteger(0);
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    holder.textViewPreviewInformation.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            holder.textViewPreviewInformation.setText(
+                                    previewInformationStrings[atomicInteger.incrementAndGet() % previewInformationStrings.length]);
+                            // start fade-in animation for text view
+                            Animation fadeInAnimation = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
+                            fadeInAnimation.setDuration(2000); // 2 seconds for animation
+                            holder.textViewPreviewInformation.startAnimation(fadeInAnimation);
+                        }
+                    });
+                }
+            }, 0, 5 * 1000);
         }
     }
 
@@ -116,10 +145,10 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
     public boolean onMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.cardview_action_add_favorite) {
-
+            // just simple , show a Toast.
+            Toast.makeText(this.context, R.string.added_into_favorite_list, Toast.LENGTH_LONG).show();
         } else if (itemId == R.id.cardview_action_view_detail) {
-
-
+            // doing nothing
         }
         return false;
     }
@@ -136,6 +165,7 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
         TextView textViewPrice;
         TextView textViewAddress;
         TextView textviewAgentName;
+        TextView textViewPreviewInformation;
         RatingBar ratingBar;
 
         public ViewHolder(View view) {
@@ -144,6 +174,7 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
             this.textViewAddress = (TextView) view.findViewById(R.id.textview_address);
             this.imagePreview = (ImageView) view.findViewById(R.id.preview_image);
             this.imageViewMore = (ImageView) view.findViewById(R.id.imageview_more);
+            this.textViewPreviewInformation = (TextView) view.findViewById(R.id.textview_information_switcher);
             this.textviewAgentName = (TextView) view.findViewById(R.id.textview_cardview_agent_name);
             this.ratingBar = (RatingBar) view.findViewById(R.id.ratingbar);
         }
