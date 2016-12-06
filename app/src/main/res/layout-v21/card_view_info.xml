@@ -50,12 +50,16 @@
             android:layout_width="195dp"
             android:layout_height="match_parent"
             android:numStars="5"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
             android:rating="1.0"
             android:stepSize="1.0" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp">
 
             <TextView
                 android:id="@+id/textview_address"

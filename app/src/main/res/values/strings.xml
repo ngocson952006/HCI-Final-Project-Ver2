@@ -133,4 +133,11 @@
     <string name="_neighbourhood_information_header">Thông tin liên quan</string>
     <string name="nearby_school_information_header">Trường học lân cận</string>
     <string name="added_into_favorite_list">Đã thêm vào danh sách yêu thích</string>
+    <string name="title_activity_contact_us">ContactUsActivity</string>
+    <string name="develop_team_name">Tree House</string>
+    <string name="develop_team_major">IT Developing Group</string>
+    <string name="develop_team_address">Bến Nghé, Quận 1, Hồ Chí Minh</string>
+    <string name="watch_on_youtube">Youtube</string>
+    <string name="message">Nhắn tin</string>
+    <string name="email">Email</string>
 </resources>
