@@ -56,6 +56,7 @@ public class SearchByCityAdapter extends RecyclerView.Adapter<SearchByCityAdapte
             Picasso.with(this.context)
                     .load(detail.getBitmapsResource()[1])
                     .fit()
+                    .centerCrop()
                     .into(holder.imagePreview);
             // register image click listener
             holder.imagePreview.setOnClickListener(new View.OnClickListener() {

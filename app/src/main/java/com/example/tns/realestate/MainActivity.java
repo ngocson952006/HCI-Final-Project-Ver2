@@ -2,17 +2,21 @@ package com.example.tns.realestate;
 
 import android.Manifest;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -26,6 +30,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tns.realestate.adapters.PrimaryApartmentAdapter;
@@ -36,6 +41,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
@@ -61,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     private Location lastKnownLocation;
     private GoogleApiClient googleApiClient;
     private MaterialSheetFab materialSheetFab;
+    private TransientFloatingActionButton fab;
     //   private Handler locationHandler;
 
     @Override
@@ -75,7 +82,7 @@ public class MainActivity extends AppCompatActivity
         int sheetColor = getResources().getColor(R.color.background_card);
         int fabColor = getResources().getColor(R.color.colorAccent);
 
-        TransientFloatingActionButton fab = (TransientFloatingActionButton) findViewById(R.id.fab);
+        this.fab = (TransientFloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +121,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View view = navigationView.getHeaderView(0);
+        ImageView imageViewNavigationView = (ImageView) view.findViewById(R.id.imageview_navigationview);
 
+        Picasso.with(this)
+                .load(R.drawable.tree_house)
+                .fit()
+                .centerCrop()
+                .into(imageViewNavigationView);
 
         /**
          * Prepare sample data
@@ -206,7 +220,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -215,7 +228,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_homepage) {
             // Handle the camera action
         } else if (id == R.id.nav_about_us) {
-
+            Intent aboutUsIntent = new Intent(this, AboutUsActivity.class);
+            this.startIntentSlideInLeft(aboutUsIntent);
         } else if (id == R.id.nav_contact) { // contact
             Intent contactIntent = new Intent(this, ContactUsActivity.class);
             this.startIntentSlideInLeft(contactIntent);
@@ -246,9 +260,12 @@ public class MainActivity extends AppCompatActivity
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
-                    this.initializeGoogleApiClient();
-                    // connect
-                    this.googleApiClient.connect();
+                    // check intenet
+                    if (isNetworkAvailable()) {
+                        this.initializeGoogleApiClient();
+                        // connect
+                        this.googleApiClient.connect();
+                    }
 
                 } else {
 
@@ -261,6 +278,18 @@ public class MainActivity extends AppCompatActivity
         // other 'case' lines to check for other
         // permissions this app might request
 
+    }
+
+    /**
+     * Check network connection status of device
+     *
+     * @return true if connection is available. Otherwise, false
+     */
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 
@@ -315,10 +344,10 @@ public class MainActivity extends AppCompatActivity
 
                 @Override
                 protected void onPostExecute(Address address) {
-                    final TextView textViewCurrentAddress = (TextView) findViewById(R.id.textview_current_location);
-                    // visualize the address locality
-                    textViewCurrentAddress.setText(address.getLocality() + " - " + address.getAddressLine(0) + " - " + address.getCountryName());
-
+                    // show popup message display user current location
+                    String userLocationString = address.getLocality();
+                    Snackbar.make(fab, "Curent location: " + userLocationString, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             }.execute();
 

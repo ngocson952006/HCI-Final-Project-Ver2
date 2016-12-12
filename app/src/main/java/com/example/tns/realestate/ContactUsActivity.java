@@ -1,88 +1,59 @@
 package com.example.tns.realestate;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.NestedScrollView;
+
+import android.content.Intent;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.SurfaceHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
-public class ContactUsActivity extends AppCompatActivity implements NestedScrollView.OnScrollChangeListener {
-
-    private static final String TAG = ContactUsActivity.class.getSimpleName();
-    private Menu menu; // a reference to menu for changing menu item's icon programmatically
-    private FloatingActionButton floatingActionButtonCallUs;
+public class ContactUsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_contact);
-        toolbar.setTitle(""); // we don not want to show title
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        this.floatingActionButtonCallUs = (FloatingActionButton) findViewById(R.id.fab_contact_us);
-        this.floatingActionButtonCallUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        ImageView imageViewDevelopingTeam = (ImageView) this.findViewById(R.id.imageview_develop_team);
-        // start to load resource image into image view using Picasso framework
-        Picasso.with(this)
-                .load(R.drawable.tree_house)
-                .fit()
-                .centerCrop()
-                .into(imageViewDevelopingTeam);
-
-        NestedScrollView nestedScrollView = (NestedScrollView) this.findViewById(R.id.nested_scrollview_contactus);
-        nestedScrollView.setOnScrollChangeListener(this); // register ScrollChangeListener
-    }
-
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        this.menu = menu;
-        return super.onPrepareOptionsMenu(menu);
+        this.setTitle("Liên hệ");
+        // show navigation button
+        ActionBar actionBar = this.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = this.getMenuInflater();
-        menuInflater.inflate(R.menu.menu_contactus_actitvity, menu);
-        //  menu.findItem(R.id.call).setVisible(false);
+        menuInflater.inflate(R.menu.menu_contact_us_activity, menu);
         return true;
     }
 
-
     @Override
-    public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-        if (this.menu != null) {
-            // detect if fab is hidden or not.
-            MenuItem menuItemCallOrShare = this.menu.findItem(R.id.call);
-            if (menuItemCallOrShare != null) {
-                if (!this.floatingActionButtonCallUs.isShown()) {
-                    menuItemCallOrShare.setVisible(true);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+                    // This activity is NOT part of this app's task, so create a new task
+                    // when navigating up, with a synthesized back stack.
+                    TaskStackBuilder.create(this)
+                            // Add all of this activity's parents to the back stack
+                            .addNextIntentWithParentStack(upIntent)
+                            // Navigate up to the closest parent
+                            .startActivities();
                 } else {
-                    menuItemCallOrShare.setVisible(false);
+                    // This activity is part of this app's task, so simply
+                    // navigate up to the logical parent activity.
+                    NavUtils.navigateUpTo(this, upIntent);
+                    this.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 }
-            }
+                return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

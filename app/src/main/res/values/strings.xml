@@ -9,7 +9,7 @@
     <string name="sample_address">Bến nghế - Quận 1 - Hồ Chí Minh</string>
     <string name="action_add_favourite">Quan tâm</string>
     <string name="action_play_next">Xem chi tiết</string>
-    <string name="recommended">Được để cử</string>
+    <string name="project_name">SaiGon Apartment</string>
     <string name="title_activity_apartment_detail">ApartmentDetailActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -130,7 +130,7 @@
     <string name="sample_preview_information">Diện tích 100m2</string>
     <string name="sample_neighbourhood_information">Phía dưới căn hộ có khu mua sắm và siêu thị CircleK mở 24/24. Phía dưới tầng hầm có dịch vụ giữ xe an toàn.</string>
     <string name="sample_nearby_school">Một số trường học gần căn hộ. Cụ thể : Trường ĐH Công nghiệp TP.HCM, Trường ĐH Công nghệ Sài Gòn,Trường ĐH Giao thông Vận tải - cơ sở 2</string>
-    <string name="_neighbourhood_information_header">Thông tin liên quan</string>
+    <string name="_neighbourhood_information_header">Mua sắm, dịch vụ</string>
     <string name="nearby_school_information_header">Trường học lân cận</string>
     <string name="added_into_favorite_list">Đã thêm vào danh sách yêu thích</string>
     <string name="title_activity_contact_us">ContactUsActivity</string>
@@ -140,4 +140,12 @@
     <string name="watch_on_youtube">Youtube</string>
     <string name="message">Nhắn tin</string>
     <string name="email">Email</string>
+    <string name="about_us_description">Ngày nay, khái niệm \"phòng làm việc\" không còn bị bó hẹp trong một không gian vật lý nữa. Thay vào đó, các môi trường văn phòng truyền thống đang dần được thay thế bằng các văn phòng di động và phân tán. Hệ thống bạn đang sử dụng có đủ linh hoạt và hiệu quả để sẵn sàng thích ứng với những thay đổi này hay không? Những dữ liệu bạn hiện có đã được xử lý tối ưu nhất để mang lại nguồn thông tin hữu ích, tạo ra lợi thế cạnh tranh cho công ty bạn hay chưa? Giải pháp tiên tiến nhất mà bạn không thể bỏ qua đó là phát triển các thiết bị, hệ thống di động. Phòng phát triển ứng dụng di động của QSoft Việt Nam là địa chỉ tin cậy và chất lượng nhất cho bạn. TreeHouse Việt Nam cung cấp các dịch vụ phát triển ứng dụng trên điện thoại với đội ngũ chuyên gia đông đảo, giúp chuyển các công việc ngoại tuyến của bạn sang thế giới di động linh hoạt và năng động. Các lập trình viên của chúng tôi sở hữu kiến thức chuyên sâu về công nghệ di động; thành thạo việc tích hợp trên các ngôn ngữ lập trình và các hệ thống khác nhau.</string>
+    <string name="about_us_email">treehouse@gmail.com</string>
+    <string name="about_us_phone">+84-1659864449</string>
+    <string name="about_us_work_time">8:00 AM - 5:00 PM</string>
+    <string name="about_us_header">Cảm ơn bạn đã sử dụng ứng dụng</string>
+    <string name="user_name">Tên</string>
+    <string name="send">Gửi</string>
+    <string name="your_message">Lời nhắn</string>
 </resources>

@@ -19,100 +19,107 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatRatingBar
-            android:id="@+id/detail_ratingbar"
-            style="@android:style/Widget.Material.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="1.0"
-            android:stepSize="1.0" />
-
-        <TextView
-            android:id="@+id/textview_detail_price"
-            style="@android:style/TextAppearance.Material.Headline"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/sample_price" />
-
-        <TextView
-            android:id="@+id/textview_detail_address"
-            style="@android:style/TextAppearance.Material.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sample_address"
-            android:textColor="@color/text_black_87" />
-
         <LinearLayout
-            android:id="@+id/linear_layout_detail_params"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textview_detail_floor"
+            <android.support.v7.widget.AppCompatRatingBar
+                android:id="@+id/detail_ratingbar"
+                style="@android:style/Widget.Material.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:text="Lầu : 3"
-                android:textColor="@color/text_black_87" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitXY"
-                android:src="@drawable/icon_bedroom" />
+                android:numStars="5"
+                android:rating="1.0"
+                android:stepSize="1.0" />
 
             <TextView
-                android:id="@+id/textview_detail_number_of_bedrooms"
+                android:id="@+id/textview_detail_price"
+                style="@android:style/TextAppearance.Material.Display1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:text="2"
-                android:textColor="@color/text_black_87" />
-
-            <ImageView
-                android:layout_width="24dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitXY"
-                android:src="@drawable/bathroom" />
-
-            <TextView
-                android:id="@+id/textview_detail_number_of_bathrooms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:text="2"
+                android:text="@string/sample_price"
                 android:textColor="@color/text_black_87" />
 
             <TextView
-                android:id="@+id/textview_detail_area"
+                android:id="@+id/textview_detail_address"
+                style="@android:style/TextAppearance.Material.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:text="Diện tích : 50m2"
+                android:text="@string/sample_address"
                 android:textColor="@color/text_black_87" />
 
+            <LinearLayout
+                android:id="@+id/linear_layout_detail_params"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_detail_floor"
+                    style="@android:style/TextAppearance.Material.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="Lầu : 3"
+                    android:textColor="@color/text_black_87" />
+
+                <TextView
+                    android:id="@+id/textview_detail_number_of_bedrooms"
+                    style="@android:style/TextAppearance.Material.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_local_hotel_black_24dp"
+                    android:gravity="fill"
+                    android:text="2"
+                    android:textColor="@color/text_black_87" />
+
+                <TextView
+                    android:id="@+id/textview_detail_number_of_bathrooms"
+                    style="@android:style/TextAppearance.Material.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/man_sitting_in_the_bathroom"
+                    android:gravity="fill"
+                    android:text="2"
+                    android:textColor="@color/text_black_87" />
+
+                <TextView
+                    android:id="@+id/textview_detail_area"
+                    style="@android:style/TextAppearance.Material.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="Diện tích : 50m2"
+                    android:textColor="@color/text_black_87" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_detail_google_maps"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/see_on_map" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button_detail_google_maps"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/see_on_map" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/horizotal_sepator" />
+
 
         <TextView
             android:id="@+id/textview_description_header"
@@ -129,12 +136,6 @@
             android:text="@string/sample_description"
             android:textAlignment="inherit" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/textview_agent_contact_header"
@@ -176,13 +177,15 @@
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/horizotal_sepator" />
         <!-- Begin neighbourhood information -->
         <TextView
             android:id="@+id/textview_neighbourhood_information_header"
             style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_local_grocery_store_black_24dp"
             android:text="@string/_neighbourhood_information_header" />
 
         <TextView
@@ -202,13 +205,15 @@
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/horizotal_sepator" />
         <!-- Begin nearby school information -->
         <TextView
             android:id="@+id/textview_nearby_school_information_header"
             style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_domain_black_24dp"
             android:text="@string/nearby_school_information_header" />
 
         <TextView
@@ -226,7 +231,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/horizotal_sepator" />
 
         <TextView
             style="@android:style/TextAppearance.Material.Title"
