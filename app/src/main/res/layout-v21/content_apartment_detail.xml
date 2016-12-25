@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:rating="1.0"
-                android:stepSize="1.0" />
+                android:stepSize="1.0"/>
 
             <TextView
                 android:id="@+id/textview_detail_price"
@@ -39,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/sample_price"
-                android:textColor="@color/text_black_87" />
+                android:textColor="@color/text_black_87"/>
 
             <TextView
                 android:id="@+id/textview_detail_address"
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sample_address"
-                android:textColor="@color/text_black_87" />
+                android:textColor="@color/text_black_87"/>
 
             <LinearLayout
                 android:id="@+id/linear_layout_detail_params"
@@ -65,7 +66,7 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
                     android:text="Lầu : 3"
-                    android:textColor="@color/text_black_87" />
+                    android:textColor="@color/text_black_87"/>
 
                 <TextView
                     android:id="@+id/textview_detail_number_of_bedrooms"
@@ -78,7 +79,7 @@
                     android:drawableStart="@drawable/ic_local_hotel_black_24dp"
                     android:gravity="fill"
                     android:text="2"
-                    android:textColor="@color/text_black_87" />
+                    android:textColor="@color/text_black_87"/>
 
                 <TextView
                     android:id="@+id/textview_detail_number_of_bathrooms"
@@ -91,7 +92,7 @@
                     android:drawableStart="@drawable/man_sitting_in_the_bathroom"
                     android:gravity="fill"
                     android:text="2"
-                    android:textColor="@color/text_black_87" />
+                    android:textColor="@color/text_black_87"/>
 
                 <TextView
                     android:id="@+id/textview_detail_area"
@@ -101,7 +102,7 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
                     android:text="Diện tích : 50m2"
-                    android:textColor="@color/text_black_87" />
+                    android:textColor="@color/text_black_87"/>
 
             </LinearLayout>
 
@@ -110,7 +111,7 @@
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/see_on_map" />
+                android:text="@string/see_on_map"/>
         </LinearLayout>
 
         <View
@@ -118,7 +119,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@color/horizotal_sepator" />
+            android:background="@color/horizotal_sepator"/>
 
 
         <TextView
@@ -126,7 +127,7 @@
             style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/decription_header" />
+            android:text="@string/decription_header"/>
 
         <TextView
             android:id="@+id/textview_detail_description"
@@ -134,7 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sample_description"
-            android:textAlignment="inherit" />
+            android:textAlignment="inherit"/>
 
 
         <TextView
@@ -142,7 +143,7 @@
             style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/agent_header" />
+            android:text="@string/agent_header"/>
 
         <TextView
             android:id="@+id/textview_agent_name"
@@ -152,7 +153,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:text="@string/metro_tower"
-            android:textColor="@color/text_black_87" />
+            android:textColor="@color/text_black_87"/>
 
         <TextView
             android:id="@+id/textview_agent_address"
@@ -161,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:text="@string/metro_tower_address" />
+            android:text="@string/metro_tower_address"/>
 
         <TextView
             android:id="@+id/textview_agent_phone"
@@ -170,14 +171,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:text="@string/metro_tower_phone" />
+            android:text="@string/metro_tower_phone"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@color/horizotal_sepator" />
+            android:background="@color/horizotal_sepator"/>
         <!-- Begin neighbourhood information -->
         <TextView
             android:id="@+id/textview_neighbourhood_information_header"
@@ -186,7 +187,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="4dp"
             android:drawableStart="@drawable/ic_local_grocery_store_black_24dp"
-            android:text="@string/_neighbourhood_information_header" />
+            android:text="@string/_neighbourhood_information_header"/>
 
         <TextView
             android:id="@+id/textview_neighbourhood_information"
@@ -195,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:text="@string/metro_tower_phone" />
+            android:text="@string/metro_tower_phone"/>
 
         <!-- End neighbourhood information-->
 
@@ -205,7 +206,7 @@
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@color/horizotal_sepator" />
+            android:background="@color/horizotal_sepator"/>
         <!-- Begin nearby school information -->
         <TextView
             android:id="@+id/textview_nearby_school_information_header"
@@ -214,7 +215,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="4dp"
             android:drawableStart="@drawable/ic_domain_black_24dp"
-            android:text="@string/nearby_school_information_header" />
+            android:text="@string/nearby_school_information_header"/>
 
         <TextView
             android:id="@+id/textview_nearby_school_information"
@@ -223,7 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:text="@string/metro_tower_phone" />
+            android:text="@string/metro_tower_phone"/>
         <!-- End nearby school information -->
 
         <View
@@ -231,13 +232,13 @@
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:background="@color/horizotal_sepator" />
+            android:background="@color/horizotal_sepator"/>
 
         <TextView
             style="@android:style/TextAppearance.Material.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register_header" />
+            android:text="@string/register_header"/>
         <!-- User name Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -250,7 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tên"
-                android:inputType="text" />
+                android:inputType="text"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->
@@ -265,7 +266,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Địa chỉa email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -276,7 +277,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:padding="12dp"
-            android:text="Đăng ký" />
+            android:text="Đăng ký"/>
 
     </LinearLayout>
 

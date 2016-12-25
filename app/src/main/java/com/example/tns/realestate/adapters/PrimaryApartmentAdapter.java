@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.tns.realestate.ApartmentDetailActivity;
 import com.example.tns.realestate.R;
 import com.example.tns.realestate.models.ApartmentDetail;
+import com.example.tns.realestate.models.ApplicationConstants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -63,7 +64,14 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
         if (detail != null) {
             holder.textViewPrice.setText(detail.getPrice());
             holder.textViewAddress.setText(detail.getAddress());
-            holder.textviewAgentName.setText(detail.getProvider().getName());
+            String agentName = detail.getProvider().getName();
+            if (agentName.length() > ApplicationConstants.MAX_WIDTH_FOR_PROJECT_NAME) {
+                agentName = agentName.substring(0, ApplicationConstants.MAX_WIDTH_FOR_PROJECT_NAME);
+                agentName += "...";
+                holder.textviewAgentName.setText(agentName);
+            } else {
+                holder.textviewAgentName.setText(agentName);
+            }
             // we should get view in View.post method. Why ?
             // When the onCreate() method is called, the content view is set
             // inflating the layout XML with a LayoutInflater. The process of inflation involves creating the views but not setting their sizes
@@ -76,6 +84,7 @@ public class PrimaryApartmentAdapter extends RecyclerView.Adapter<PrimaryApartme
                     // In this app, we use open source Picasso framework for this purpose.
                     Picasso.with(context)
                             .load(detail.getBitmapsResource()[0])
+                            .centerCrop()
                             .fit()
                             .into(holder.imagePreview);
                 }
